@@ -14,4 +14,4 @@ VERSION=$(curl -s "http://3.7.214.202:8081/nexus/service/local/repositories/rele
 URL=http://3.7.214.202:8081/nexus/service/local/repositories/releases/content/
 
 # pull latest
-wget “$URL$GROUPID/$ARTIFACTID/$VERSION/$ARTIFACTID-$VERSION.jar”
+wget “$URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSION.jar”
