@@ -2,7 +2,7 @@
 # URL used to extract the nexus repository details
 # http://3.7.214.202:8081/nexus/service/local/repositories/releases/content/com/squad/ForexPay/maven-metadata.xml
 #To pull group id
-
+#!/bin/bash
 GROUPID=$(curl -s "http://3.7.214.202:8081/nexus/service/local/repositories/releases/content/com/squad/ForexPay/maven-metadata.xml" | grep "<groupId>.*</groupId>" | sed 's/  <groupId>//g'| sed 's/<\/groupId>//g' | sed 's/\./\//g')
 #To pull artifactID
 
