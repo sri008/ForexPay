@@ -11,7 +11,7 @@ ARTICATID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories
 
 VERSION=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<version>.*</version>" | sort --version-sort | uniq | tail -n1 | sed -e "s#\(.*\)\(<version>\)\(.*\)\(</version>\)\(.*\)#\3#g")
 # URL
-URL=http:/http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/
+URL=http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/
 
 # pull latest
 wget $URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSION.jar
