@@ -14,4 +14,4 @@ VERSION=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/s
 URL=http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/
 
 # pull latest
-wget $URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSION.jar
+wget $URL$GROUPID/$ARTICATID/$VERSION/$VERSION.jar
