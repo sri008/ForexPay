@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.squad</groupId>
 	<artifactId>ForexPay</artifactId>
-	<version>3.0</version>
+	<version>4.0</version>
 	<name>ForexPay</name>
 	<description>Money Transfer project for Spring Boot</description>
 	<scm>
