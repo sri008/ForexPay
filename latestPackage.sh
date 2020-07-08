@@ -8,10 +8,11 @@ GROUPID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/s
 
 ARTICATID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<artifactId>.*</artifactId>" | sed 's/  <artifactId>//g'| sed 's/<\/artifactId>//g')
 #To pull latest VersionID
+VERSION=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<version>.*</version>" | sort --version-sort | uniq | tail -n1 | sed -e "s#\(.*\)\(<version>\)\(.*\)\(</version>\)\(.*\)#\3#g")
 
-VERSION=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<version>.*</version>" | sort --version-sort | uniq | tail -n1 | sed -e "s#\(.*\)\(<version>\)\(.*\)\(</version>\)\(.*\)#\3#g"| sed 's/-SNAPSHOT//g')
+VERSIONID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<version>.*</version>" | sort --version-sort | uniq | tail -n1 | sed -e "s#\(.*\)\(<version>\)\(.*\)\(</version>\)\(.*\)#\3#g"| sed 's/-SNAPSHOT//g')
 # URL
 URL=http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/
 
 # pull latest
-wget $URL$GROUPID/$ARTICATID/$VERSION/$VERSION*.jar
+curl $URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSIONID-*.jar
