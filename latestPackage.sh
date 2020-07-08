@@ -3,7 +3,9 @@
 # http://3.7.214.202:8081/nexus/service/local/repositories/releases/content/com/squad/ForexPay/maven-metadata.xml
 #To pull group id
 #!/bin/sh
-GROUPID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<groupId>.*</groupId>" | sed 's/  <groupId>//g'| sed 's/<\/groupId>//g' | sed 's/\./\//g')
+#GROUPID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<groupId>.*</groupId>" | sed 's/  <groupId>//g'| sed 's/<\/groupId>//g' | sed 's/\./\//g')
+GROUP=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<groupId>.*</groupId>" | sed 's/  <groupId>//g'| sed 's/<\/groupId>//g')
+
 #To pull artifactID
 
 ARTICATID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/com/squad/ForexPay/maven-metadata.xml" | grep "<artifactId>.*</artifactId>" | sed 's/  <artifactId>//g'| sed 's/<\/artifactId>//g')
@@ -15,4 +17,5 @@ VERSIONID=$(curl -s "http://35.154.227.184:8081/nexus/service/local/repositories
 URL=http://35.154.227.184:8081/nexus/service/local/repositories/snapshots/content/
 
 # pull latest
-curl $URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSIONID-*.jar
+#wget $URL$GROUPID/$ARTICATID/$VERSION/$ARTICATID-$VERSIONID-*.jar
+wget -O $VERSION.jar "http://35.154.227.184:8081/nexus/service/local/artifact/maven/redirect?r=snapshots&g=$GROUP&a=$ARTICATID&v=$VERSION&p=jar"
